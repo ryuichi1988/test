@@ -1,1 +1,4 @@
 ﻿cd D:/360MoveData/Users/大胆的豌豆/Documents/py/
+git add .
+git commit -m ***
+git push
