@@ -3,4 +3,7 @@ git add .
 git commit -m ***
 git push
 
+<<<<<<< HEAD
 测试最近更新最近更新←※※※※○○○ss是
+=======
+>>>>>>> eac5c87de0bb9655f1b0c20d08e3a127c52a3459
