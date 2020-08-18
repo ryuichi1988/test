@@ -352,59 +352,9 @@ def checkifboss():
         return
 
     else:
-        global checkn
-        print(checkn)
-        print(349)
-        if checkn != 1:
-            checkn = 1
-            pyautogui.click(522,85)
-            time.sleep(0.5)
-            pyautogui.click(524,69)
-            time.sleep(0.2)
-            print(checkn)
-            print(357)
-            return
-        else:
-            checkn = 0
-            print("此账号任务结束,等待10秒切换下一个账号")
-            time.sleep(10)
-            print("正在切换....等待主窗口")
-            pyautogui.click(587,1004)
-            while pyautogui.pixelMatchesColor(1136,268,(81, 81, 81)) == False:
-                continue
-            print("已定位关闭按钮")
-            time.sleep(0.5)
-            pyautogui.click(1136,268)
-            while pyautogui.pixelMatchesColor(292,487,(82,35,68)) == False:
-                continue
-            print("已定位放置少女图标")
-            time.sleep(0.5)
-            pyautogui.click(292,489)
-            print("已点击程序图标,下一步窗口靠边对齐")
-            while pyautogui.pixelMatchesColor(587,15,(36,119,175)) == False:
-                continue
-            print("已定位NoxPlayer位置")
-            time.sleep(0.5)
-            pyautogui.moveTo(579,10)
-            time.sleep(0.5)
-            pyautogui.drag(-556,0,3,button="left") #556还是 557
-            while pyautogui.pixelMatchesColor(268,824,(109,92,150)) == False:
-                print("等待游戏加载Loading...")
-                time.sleep(0.3)
-                continue
-            time.sleep(0.2)
-            pyautogui.click(268,824)#点击关闭
-            time.sleep(0.5)
-            pyautogui.click(297,830)#点击服务器,进入服务器选择列表
-            time.sleep(1)
-            pyautogui.click(426,332)#点击最后一个人物
-            time.sleep(0.5)
-            pyautogui.click(287,884)#点击开始按钮进入游戏
-            time.sleep(15)
-         #   pyautogui.click(230,964)#关闭挂机结果
-          #  time.sleep(5)
+        return
 
-            return
+
 
 
 
@@ -470,8 +420,22 @@ def muryouButton():
             time.sleep(1)
             pyautogui.click(432,241)
             time.sleep(1)
-    #もし　百科美人の場合
+    
 
+    #如果是限定特典(要购买觉醒丹)
+
+    if pyautogui.pixelMatchesColor(100,454,(255,110,77)) == True:
+        print("限定特典,开始购买觉醒丹哦")
+        if pyautogui.pixelMatchesColor(279,471,(255,176,92)) == pyautogui.pixelMatchesColor(287,476,(254,204,129)) == True:
+            time.sleep(0.8)
+            pyautogui.click(284,632)
+            time.sleep(0.8)
+            if pyautogui.pixelMatchesColor(383,624,(255,255,255)) == True:
+                pyautogui.click(274,686)
+                time.sleep(0.5)
+        quickreturn()
+
+    #もし　百科美人の場合
     if pyautogui.pixelMatchesColor(444,885,(94,37,17)) == True:
         print("百花美人362")
         #上段無料
@@ -759,6 +723,59 @@ def checkDOUMEI():
         time.sleep(0.2)
     return
 
+def ChangeAccount():
+    global checkn
+    print(checkn)
+    print("ChangeAccount 729")
+    if checkn != 1:
+        checkn = 1
+        pyautogui.click(522,85)
+        time.sleep(0.5)
+        pyautogui.click(524,69)
+        time.sleep(0.2)
+        print(checkn)
+        return
+    else:
+        checkn = 0
+        print("此账号任务结束,等待10秒切换下一个账号")
+        time.sleep(10)
+        print("正在切换....等待主窗口")
+        pyautogui.click(587,1004)
+        while pyautogui.pixelMatchesColor(1136,268,(81, 81, 81)) == False:
+            continue
+        print("已定位关闭按钮")
+        time.sleep(0.5)
+        pyautogui.click(1136,268)
+        while pyautogui.pixelMatchesColor(292,487,(82,35,68)) == False:
+            continue
+        print("已定位放置少女图标")
+        time.sleep(0.5)
+        pyautogui.click(292,489)
+        print("已点击程序图标,下一步窗口靠边对齐")
+        while pyautogui.pixelMatchesColor(587,15,(36,119,175)) == False:
+            continue
+        print("已定位NoxPlayer位置")
+        time.sleep(0.5)
+        pyautogui.moveTo(579,10)
+        time.sleep(0.5)
+        pyautogui.drag(-556,0,3,button="left") #556还是 557
+        while pyautogui.pixelMatchesColor(268,824,(109,92,150)) == False:
+            print("等待游戏加载Loading...")
+            time.sleep(0.3)
+            continue
+        time.sleep(0.2)
+        pyautogui.click(268,824)#点击关闭
+        time.sleep(0.5)
+        pyautogui.click(297,830)#点击服务器,进入服务器选择列表
+        time.sleep(1)
+        pyautogui.click(426,332)#点击最后一个人物
+        time.sleep(0.5)
+        pyautogui.click(287,884)#点击开始按钮进入游戏
+        time.sleep(15)
+        #   pyautogui.click(230,964)#关闭挂机结果
+        #  time.sleep(5)
+
+        return
 
 
 while True:
@@ -771,6 +788,6 @@ while True:
     clickMail()
     clickNinmu()
     checkifboss()
-
+    ChangeAccount()
 
 
