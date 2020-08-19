@@ -43,7 +43,6 @@ ninmunumber2 = 464,512 #494 528
 zhuzaofinish = 0
 #判断挂机结果画面 如果不是,跳过
 def Opening():
-    time.sleep(1)
     if pyautogui.pixelMatchesColor(429,320,(200,112,60)) == True:
         pyautogui.click(50,976)
         time.sleep(3)
@@ -56,6 +55,26 @@ def Opening():
         time.sleep(0.2)
         pyautogui.click(532,112)
         time.sleep(3)
+
+
+    if pyautogui.pixelMatchesColor(219,158,(255,85,95),tolerance=30) == True:
+        print("登陆奖励61")
+        pyautogui.click(212,157)
+        while pyautogui.pixelMatchesColor(532,112,(250,238,240)) == False:#等待登陆奖励页面启动
+            continue
+        time.sleep(0.3)
+        if pyautogui.pixelMatchesColor(223,960,(175,174,173)) == True:#如果当前页面无法领取
+            pyautogui.click(379,111)#点右侧页面
+            while pyautogui.pixelMatchesColor(367,631,(78,63,64)) == False:
+                continue#等待右侧领奖页面
+            time.sleep(0.3)
+        else:
+            pass
+        pyautogui.click(237,956)#点击领奖
+        time.sleep(0.5)
+        while pyautogui.pixelMatchesColor(181,54,(38,42,47)) == False:
+            pyautogui.click(514,144)
+        time.sleep(0.5)
 
     #一朝一夕
     if pyautogui.pixelMatchesColor(240,549,(59,46,72)) == True:
@@ -77,8 +96,7 @@ def Opening():
     #首次启动新人物界面
     while pyautogui.pixelMatchesColor(189,42,(173,255,255)) == False:
         pyautogui.click(54,987)
-        time.sleep(0.2)
-    time.sleep(0.2)
+        time.sleep(0.3)
 
 
 
@@ -115,14 +133,14 @@ def Opening():
             while pyautogui.pixelMatchesColor(189,42,(173,255,255)) == False:
                 pyautogui.click(54,987)
                 time.sleep(0.2)
-        time.sleep(0.5)
+#        time.sleep(0.5)
 
 
     while pyautogui.pixelMatchesColor(189,42,(173,255,255)) == False:
         pyautogui.click(54,987)
         time.sleep(0.2)
 
-    time.sleep(0.5)
+#    time.sleep(0.5)
     return
 
 def checkifboss():
@@ -204,8 +222,10 @@ def checkifboss():
             while pyautogui.pixelMatchesColor(502,589,(155,111,61))==False:
                 continue
             time.sleep(0.2)
-            pyautogui.click(275,135)#Number 3 charctar 
+            pyautogui.click(275,135)#点击第二个副将 
             time.sleep(0.5)
+        pyautogui.click(59,683)
+        time.sleep(0.5)
         
         if pyautogui.pixelMatchesColor(272,792,(254,255,255))==True:
             print("检测到第二副将不可训练,进行点击第三副将")
@@ -313,6 +333,11 @@ def checkifboss():
         print("闘技場開始（全5回）")
         pyautogui.click(470,519)
         while pyautogui.pixelMatchesColor(467,537,(85,59,39)) == False:
+            if pyautogui.pixelMatchesColor(425,608,(37,90,140)) == True:
+                pyautogui.click(425,608)
+                return
+            else:
+                pass
             continue
         time.sleep(0.2)
         pyautogui.click(475,644)#3番人挑戦
@@ -352,6 +377,7 @@ def checkifboss():
         return
 
     else:
+        quickreturn()
         return
 
 
@@ -500,14 +526,16 @@ def muryouButton():
 
     #兵甲工房
     if pyautogui.pixelMatchesColor(455,55,(211,147,84)) == True:
-        time.sleep(0.5)
+        time.sleep(0.8)
         if pyautogui.pixelMatchesColor(147,875,(90,37,18)) == True:#如果无料可以点
             pyautogui.click(147,875)
             time.sleep(2)
             pyautogui.click(282,877)
             time.sleep(2)
         if pyautogui.pixelMatchesColor(337,751,(160,119,78)) == False:#如果70级闪红 则点70级按钮
-            pyautogui.click(337,751)
+            pyautogui.click(277,772)
+            time.sleep(2)
+            pyautogui.click(280,853)
             time.sleep(2)
         if pyautogui.pixelMatchesColor(147,875,(90,37,18)) == True:#如果无料可以点
             pyautogui.click(147,875)
@@ -560,54 +588,62 @@ def muryouButton():
 
 
 def clickNinmu():
-    pyautogui.click(292,723)#点击任务按钮
-    while pyautogui.pixelMatchesColor(493,124,(1,1,0)) == False:
-        continue
-    time.sleep(0.2)
+    while True:
+        pyautogui.click(292,723)#点击任务按钮
+        while pyautogui.pixelMatchesColor(493,124,(1,1,0)) == False:#等待任务窗口
+            continue
+        time.sleep(0.2)
+
+
     #如果任务页面是MAIN或者功绩页面 而不在Daily上的话
-    if pyautogui.pixelMatchesColor(200,227,(38,30,26)) == False:
-        pyautogui.click(198,125)
-        time.sleep(0.2)
-    
-    while pyautogui.pixelMatchesColor(430,406,(37,86,61),tolerance=5) == True:
-        time.sleep(0.5)
-        pyautogui.click(430,406)
-        time.sleep(0.5)
-        while pyautogui.pixelMatchesColor(520,125,(1,1,0)) == False:
-            pyautogui.click(520,125)
+        if pyautogui.pixelMatchesColor(200,227,(38,30,26)) == False:
+            pyautogui.click(198,125)
+            time.sleep(0.2)
+        while pyautogui.pixelMatchesColor(430,406,(37,86,61),tolerance=5) == True:#如果有任务达成
+            time.sleep(0.5)
+            pyautogui.click(430,406)
+            time.sleep(0.5)
+            while pyautogui.pixelMatchesColor(520,125,(1,1,0)) == False:#返回任务界面
+                pyautogui.click(520,125)
+                time.sleep(0.3)
+            time.sleep(0.2)
+        
+        #有宝箱达成时,拿取宝箱
+        if pyautogui.pixelMatchesColor(83,218,(255,255,150),tolerance=30) == True:
+            pyautogui.click(83,218)#宝箱1
+            time.sleep(0.5)
+            while pyautogui.pixelMatchesColor(520,125,(1,1,0)) == False:
+                pyautogui.click(520,125)
+                time.sleep(0.3)
             time.sleep(0.3)
-        time.sleep(0.2)
-    time.sleep(0.7)
 
-
-
-#有领取按钮时循环领取
-
-    #有宝箱达成时,拿取宝箱
-    if pyautogui.pixelMatchesColor(83,218,(255,255,150),tolerance=30) == True:
-        pyautogui.click(83,218)#宝箱1
-        time.sleep(0.5)
-        while pyautogui.pixelMatchesColor(520,125,(1,1,0)) == False:
-            pyautogui.click(520,125)
+        #有宝箱达成时,拿取宝箱
+        if pyautogui.pixelMatchesColor(255,220,(255,245,120),tolerance=30) == True:
+            time.sleep(0.5)
+            pyautogui.click(264,227)#宝箱2
+            time.sleep(0.5)
+            while pyautogui.pixelMatchesColor(520,125,(1,1,0)) == False:
+                pyautogui.click(520,125)
+                time.sleep(0.3)
             time.sleep(0.3)
-        time.sleep(0.2)
-    time.sleep(0.7)
-    
+
+    # 宝箱3
+        if pyautogui.pixelMatchesColor(432,214,(255,245,100),tolerance=40) == True:
+            time.sleep(0.5)
+            pyautogui.click(455,224)
+            time.sleep(0.5)
+            while pyautogui.pixelMatchesColor(520,125,(1,1,0)) == False:
+                pyautogui.click(520,125)
+                time.sleep(0.3)
 
 
-    #宝箱2需要重写
+
+        if pyautogui.pixelMatchesColor(76,492,(224,246,132)) == True:#判断如果无任务
+            return 
 
 
-   # 宝箱3
-    if pyautogui.pixelMatchesColor(432,214,(255,245,100),tolerance=40) == True:
-        pyautogui.click(455,224)
-        time.sleep(0.5)
-        while pyautogui.pixelMatchesColor(520,125,(1,1,0)) == False:
-            pyautogui.click(520,125)
-            time.sleep(0.3)
-    return
-
-    #100de baoxiang　もし100活躍度の宝ハコ Here must be fixed.
+        else:
+            checkifboss()
 
 
 def Event():
@@ -696,12 +732,21 @@ def checkTokuten():
 
 def checkDOUMEI():
     if pyautogui.pixelMatchesColor(532,946,(255,87,93)) == True:#如果同盟闪红
+        time.sleep(0.5)
         pyautogui.click(532,946) #点击同盟
+        time.sleep(0.5)
         while pyautogui.pixelMatchesColor(401,179,(223,184,22)) == False:
             continue#等待同盟窗口
-        time.sleep(0.4)
-        pyautogui.click(412,179)#城堡管理
-        time.sleep(0.2)
+        time.sleep(0.6)
+        pyautogui.click(400,178)#城堡管理
+        time.sleep(0.6)
+        if pyautogui.pixelMatchesColor(516,320,(153,5,28)) == True:
+            pyautogui.click(516,320)
+            time.sleep(0.5)
+            yautogui.click(400,178)#城堡管理
+            time.sleep(0.6)
+
+
         if pyautogui.pixelMatchesColor(411,161,(104,53,14)) == True:
             print("同盟无城堡奖励,返回主界面752")
             while pyautogui.pixelMatchesColor(189,42,(173,255,255)) == False:
@@ -727,18 +772,23 @@ def ChangeAccount():
     global checkn
     print(checkn)
     print("ChangeAccount 729")
-    if checkn != 1:
-        checkn = 1
+    if checkn != 2:
+        checkn +=1
         pyautogui.click(522,85)
         time.sleep(0.5)
         pyautogui.click(524,69)
         time.sleep(0.2)
+        quickreturn()
+        time.sleep(0.2)
         print(checkn)
+        quickreturn()
         return
     else:
         checkn = 0
         print("此账号任务结束,等待10秒切换下一个账号")
-        time.sleep(10)
+        time.sleep(0.5)
+        pyautogui.click(518,63)
+        time.sleep(9.5)
         print("正在切换....等待主窗口")
         pyautogui.click(587,1004)
         while pyautogui.pixelMatchesColor(1136,268,(81, 81, 81)) == False:
@@ -765,11 +815,21 @@ def ChangeAccount():
             continue
         time.sleep(0.2)
         pyautogui.click(268,824)#点击关闭
-        time.sleep(0.5)
+        time.sleep(0.3)
+        while pyautogui.pixelMatchesColor(299,878,(210,165,241)) == False:#等待主界面
+            continue
+        time.sleep(0.2)
         pyautogui.click(297,830)#点击服务器,进入服务器选择列表
-        time.sleep(1)
+
+        time.sleep(0.3)
+        while pyautogui.pixelMatchesColor(480,319,(134,11,11)) == False:
+            continue
+        time.sleep(0.3)
         pyautogui.click(426,332)#点击最后一个人物
-        time.sleep(0.5)
+        time.sleep(0.2)
+        while pyautogui.pixelMatchesColor(299,878,(210,165,241)) == False:#等待主界面
+            continue
+        time.sleep(0.2)
         pyautogui.click(287,884)#点击开始按钮进入游戏
         time.sleep(15)
         #   pyautogui.click(230,964)#关闭挂机结果
@@ -787,7 +847,6 @@ while True:
     checkDOUMEI()
     clickMail()
     clickNinmu()
-    checkifboss()
     ChangeAccount()
 
 

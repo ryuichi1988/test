@@ -1,2 +1,6 @@
-import pyautogui as pa
-pa.moveTo((378,727))
+a =1
+
+while a == 5 :
+    continue
+    a += 1
+    print(a)
