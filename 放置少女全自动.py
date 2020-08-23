@@ -388,6 +388,9 @@ def checkifboss():
 def clickMail():
     if pyautogui.pixelMatchesColor(139,158,(255,101,104)) == True:
         pyautogui.click(mail)
+        time.sleep(2)
+        if pyautogui.pixelMatchesColor(517,316,(86,1,18)) == True:
+            pyautogui.click(517,316)
         while pyautogui.pixelMatchesColor(401,874,(248,248,249)) == False:
             continue
         pyautogui.sleep(0.3)
@@ -532,11 +535,9 @@ def muryouButton():
             time.sleep(2)
             pyautogui.click(282,877)
             time.sleep(2)
-        if pyautogui.pixelMatchesColor(337,751,(160,119,78)) == False:#如果70级闪红 则点70级按钮
-            pyautogui.click(277,772)
-            time.sleep(2)
-            pyautogui.click(280,853)
-            time.sleep(2)
+        if pyautogui.pixelMatchesColor(340,748,(159,120,79)) == False:#如果70级闪红 则点70级按钮
+            pyautogui.click(340,748)
+            time.sleep(1)
         if pyautogui.pixelMatchesColor(147,875,(90,37,18)) == True:#如果无料可以点
             pyautogui.click(147,875)
             time.sleep(2)
@@ -717,10 +718,10 @@ def checkTokuten():
         if pyautogui.pixelMatchesColor(446,62,(255,50,65)) == True:
             pyautogui.click(446,57)
             print("特典月のギフト　585実行")
-            while pyautogui.pixelMatchesColor(143,869,(150,101,58)) == False:
+            while pyautogui.pixelMatchesColor(479,783,(243,239,235)) == False:
                 continue
             time.sleep(0.2)
-            pyautogui.click(143,869)
+            pyautogui.click(302,874)
             while pyautogui.pixelMatchesColor(189,42,(173,255,255)) == False:
                 pyautogui.click(54,987)
             time.sleep(0.2)
