@@ -216,7 +216,7 @@ def checkifboss():
         time.sleep(0.5)
 
         
-        if pyautogui.pixelMatchesColor(272,792,(254,255,255))==True:
+        if pyautogui.pixelMatchesColor(272,792,(254,255,255))==True or pyautogui.pixelMatchesColor(287,641,(191,231,250))==True:#如果第一副将MAX
             print("检测到第一副将不可训练,进行点击第二副将")
             pyautogui.click(515,213)
             while pyautogui.pixelMatchesColor(502,589,(155,111,61))==False:
@@ -328,10 +328,12 @@ def checkifboss():
         # xunliansuo wanbi fanhui zhucaidan
     elif pyautogui.pixelMatchesColor(387,602,(251,252,252)) == True:
         pyautogui.click(387,602)
-        time.sleep(0.3)
+        time.sleep(0.7)
     elif  pyautogui.pixelMatchesColor(79,511,(227,203,39)) == pyautogui.pixelMatchesColor(255,507,(169,100,62))==True: #闘技場と判断しました
         print("闘技場開始（全5回）")
+        time.sleep(1)
         pyautogui.click(470,519)
+        time.sleep(0.52)
         while pyautogui.pixelMatchesColor(467,537,(85,59,39)) == False:
             if pyautogui.pixelMatchesColor(425,608,(37,90,140)) == True:
                 pyautogui.click(425,608)
@@ -339,7 +341,7 @@ def checkifboss():
             else:
                 pass
             continue
-        time.sleep(0.2)
+        time.sleep(0.5)
         pyautogui.click(475,644)#3番人挑戦
         time.sleep(0.5)
         if pyautogui.pixelMatchesColor(122,599,(122,38,38)) == True:
@@ -364,14 +366,15 @@ def checkifboss():
         time.sleep(0.5)
     elif  pyautogui.pixelMatchesColor(317,531,(167,97,59)) == True:
         print("Twitter share")
+        time.sleep(0.5)
         pyautogui.click(440,512)
         while pyautogui.pixelMatchesColor(136,289,(218,1,12)) == False:
             continue#等待主人物界面
-        time.sleep(0.2)
+        time.sleep(0.5)
         pyautogui.click(416,291)
         while pyautogui.pixelMatchesColor(179,993,(255,255,255)) == False:
             continue#等待 Twitter 画面
-        time.sleep(0.2)
+        time.sleep(0.5)
         pyautogui.click(583,921)
         quickreturn()
         return
@@ -535,20 +538,30 @@ def muryouButton():
             time.sleep(2)
             pyautogui.click(282,877)
             time.sleep(2)
+        else:
+            pass
         if pyautogui.pixelMatchesColor(340,748,(159,120,79)) == False:#如果70级闪红 则点70级按钮
             pyautogui.click(340,748)
             time.sleep(1)
+        else:
+            pass
         if pyautogui.pixelMatchesColor(147,875,(90,37,18)) == True:#如果无料可以点
             pyautogui.click(147,875)
             time.sleep(2)
             pyautogui.click(282,877)
             time.sleep(2)
+        else:
+            pass
         if pyautogui.pixelMatchesColor(498,750,(166,123,81)) == False:#如果85级闪红 则点85级按钮
             pyautogui.click(498,750)
             time.sleep(2)
+        else:
+            pass
         if pyautogui.pixelMatchesColor(147,875,(90,37,18)) == True:#如果无料可以点
             pyautogui.click(147,875)
             time.sleep(0.5)
+        else:
+            pass
         quickreturn()
         return
     if pyautogui.pixelMatchesColor(515,418,(78,86,155)) == True:
