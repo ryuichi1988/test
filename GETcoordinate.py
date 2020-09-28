@@ -1,6 +1,6 @@
 import pyautogui, sys , time
 print('Press Ctrl-C to quit.')
-pyautogui.moveTo(212,157)
+pyautogui.moveTo(501,577)
 try:
     while True:
         x, y = pyautogui.position()

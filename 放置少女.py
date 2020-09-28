@@ -3,8 +3,10 @@ from pyautogui import pixelMatchesColor as p
 from pyautogui import click as c
 
 
-# 筋力緑 = 472,409,(70,134,30) 
+
 kinryokuRed = 470,404,(205,43,44)
+kinryokugreen = 472,409,(70,134,30)
+# 筋力緑 = 472,409,(70,134,30)
 
 binsyouGre = 472,437,(70,134,30)
 binsyouRed = 469,438,(206,40,44)
@@ -17,7 +19,7 @@ tairyokuRed = 469,503,(206,43,43)
 yes= 0
 no = 0
 yesno = 0
-while yesno < 2700:
+while yesno < 1151: #此处填写有多少个丹药
     if p(384,710,(248,249,250)) == p(174,709,(234,237,238)) == True:
         c(394,708)
         time.sleep(0.3)
