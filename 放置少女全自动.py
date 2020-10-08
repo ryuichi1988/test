@@ -782,7 +782,7 @@ def checkDOUMEI():
         if pyautogui.pixelMatchesColor(516,320,(153,5,28),tolerance=5) ==True:
             pyautogui.click(516,320)
             time.sleep(0.5)
-            yautogui.click(400,178)#城堡管理
+            pyautogui.click(400,178)#城堡管理
             time.sleep(0.6)
 
 
